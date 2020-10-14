@@ -161,12 +161,10 @@ if (!$_SESSION['userid']) {
                             <input type="hidden" value="<?php echo $room; ?>" name="oldroom" required><!-- เก็บเลขห้องเดิมเอาไว้ก่อน -->
 
                             <select class="form-control" name="roomNumber" id="roomNumber">
-
+                            
                                 <option value="<?php echo $room; ?>"><?php echo $room ?></option>
                                 <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
-                                    <option value="<?php echo $row['id_room'];
-                                                    ?>"><?php echo $row['id_room'];
-                                                        ?></option>
+                                    <option value="<?php echo $row['id_room'];?>"><?php echo $row['id_room']; ?> | <?php echo $row['type_room'];?></option>
                                 <?php }
                                 ?>
                             </select>

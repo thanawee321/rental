@@ -148,7 +148,7 @@ if (!$_SESSION['userid']) {
 
                         <select class="form-control" name="roomNumber" id="roomNumber" required>
                             <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
-                                <option value="<?php echo $row['id_room']; ?>" required><?php echo $row['id_room']; ?></option>
+                                <option value="<?php echo $row['id_room']; ?>" required><?php echo $row['id_room']; ?> | <?php echo $row['type_room'];?></option>
                             <?php } ?>
                         </select>
                     </div>

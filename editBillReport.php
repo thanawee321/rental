@@ -159,7 +159,6 @@ if (!$_SESSION['userid']) {
                 </div>
             </div>
         </div>
-
         <center>
 
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updatebill">เพิ่มข้อมูล</button>
