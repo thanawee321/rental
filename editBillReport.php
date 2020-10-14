@@ -153,9 +153,8 @@ if (!$_SESSION['userid']) {
             <br>
             <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
         </div><br>
-
-
-
+ 
+  
         
 
 

@@ -29,6 +29,8 @@ if (!$_SESSION['userid']) {
     $query = "INSERT INTO rental.member VALUES('','$idcard','$name','$surname','$roomNumber','$typeCar','$plate','$phone','$today')";
     $result = mysqli_query($connect,$query);
 
+
+    
     if($result){
 
         echo "<script>";

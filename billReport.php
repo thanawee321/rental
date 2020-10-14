@@ -392,9 +392,7 @@ if (!$_SESSION['userid']) {
                         </div>
                     </div>
                 </div>
-            </div>
-
-            
+            </div>  
         <br>
             <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
     </body>

@@ -209,6 +209,8 @@ if (!$_SESSION['userid']) {
         </div>
     </div>
 
+
+
     <!--modal room empty-->
     <div class="modal fade" id="roomEmpty" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -249,6 +251,8 @@ if (!$_SESSION['userid']) {
             </div>
         </div>
 
+
+        
          <!-- Modal status Pay-->
          <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
