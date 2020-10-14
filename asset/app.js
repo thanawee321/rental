@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     dom: 'Bfrtip',
     buttons: [
-      'pageLength', 'excel', 'pdf',
+      'pageLength', 'excel', 
       { extend: 'print', essageTop: 'รายการบิลทั้งหมด' },
       'colvis'],
     "lengthMenu": [[5, 10, 15, 20, -1], ["5", "10", "15", "20", "ทั้งหมด"]],

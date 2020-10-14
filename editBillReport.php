@@ -79,7 +79,7 @@ if (!$_SESSION['userid']) {
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item " href="registerMember.php">เพิ่มข้อมูลลูกค้า</a>
-                                
+
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#roomEmpty">
                                     ตรวจสอบห้องว่าง
@@ -114,15 +114,30 @@ if (!$_SESSION['userid']) {
                 <div class="row">
                     <div class="col-2">
                         <label>ค่าน้ำ</label>
-                        <input type="number" class="form-control" name="water_bill" id="water_bill" value="<?php echo $water; ?>">
+                        <div class="was-validated">
+                            <input type="number" class="form-control" name="water_bill" id="water_bill" value="<?php echo $water; ?>" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่ค่าน้ำ **
+                            </div>
+                        </div>
                     </div>
                     <div class="col-2">
                         <label>ค่าไฟ</label>
-                        <input type="number" class="form-control" name="electric_bill" id="electric_bill" value="<?php echo $ele; ?>">
+                        <div class="was-validated">
+                            <input type="number" class="form-control" name="electric_bill" id="electric_bill" value="<?php echo $ele; ?>" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่ค่าไฟ **
+                            </div>
+                        </div>
                     </div>
                     <div class="col-2">
                         <label>ค่าห้อง</label>
-                        <input type="number" class="form-control" name="room_bill" id="room_bill" value="<?php echo $room; ?>">
+                        <div class="was-validated">
+                            <input type="number" class="form-control" name="room_bill" id="room_bill" value="<?php echo $room; ?>" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่ค่าห้อง **
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -135,27 +150,27 @@ if (!$_SESSION['userid']) {
             </div>
 
             <div class="row">
-                    <div class="col-2">
-                        <label>การชำระบิล</label>
-                        <select class="form-control" id="status_bill">
+                <div class="col-2">
+                    <label>การชำระบิล</label>
+                    <select class="form-control" id="status_bill">
                         <option value="ชำระแล้ว">ชำระเงินแล้ว</option>
                         <option value="ยังไม่ชำระ">ไม่ได้ชำระเงิน</option>
-                        </select>
-                    </div>
+                    </select>
                 </div>
             </div>
+        </div>
 
-            <center>
+        <center>
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updatebill">เพิ่มข้อมูล</button>
-                <input type="reset" class="btn btn-danger" value="ยกเลิก">
-            </center>
-            <br>
-            <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updatebill">เพิ่มข้อมูล</button>
+            <input type="reset" class="btn btn-danger" value="ยกเลิก">
+        </center>
+        <br>
+        <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
         </div><br>
- 
-  
-        
+
+
+
 
 
         <!--modal logout-->
@@ -243,8 +258,8 @@ if (!$_SESSION['userid']) {
             </div>
         </div>
 
-         <!-- Modal status Pay-->
-         <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <!-- Modal status Pay-->
+        <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -269,7 +284,8 @@ if (!$_SESSION['userid']) {
                                 <tbody>
                                     <?php while ($row = mysqli_fetch_array($resultstatusPay)) { ?>
                                         <tr>
-                                            <!--<td><?php //echo $row['id_bill'];?></td>-->
+                                            <!--<td><?php //echo $row['id_bill'];
+                                                    ?></td>-->
                                             <td><?php echo $row['name_member']; ?></td>
                                             <td><?php echo $row['sur_member']; ?></td>
                                             <td><?php echo $row['status_bill']; ?></td>
