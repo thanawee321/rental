@@ -8,7 +8,6 @@ if (!$_SESSION['userid']) {
     echo "</script>";
 
     Header('Refresh:0; url=index.php');
-
 } else if ($_SESSION['userstatus'] == "user") {
 
     echo "<script>";
@@ -112,80 +111,94 @@ if (!$_SESSION['userid']) {
                 <div class="row">
                     <div class="col-4">
                         <label>รหัสบัตรประชาชน</label>
-                        <input type="text" class="form-control " name="idcard" id="idcard" required value="<?php echo $id_card; ?>" maxlength="13">
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-4">
-                        <label>ชื่อลูกค้า</label>
-                        <input type="text" class="form-control" name="name" id="name" value="<?php echo $name; ?>" required>
-                    </div>
-                    <div class="col-4">
-                        <label>นามสกุลลูกค้า</label>
-                        <input type="text" class="form-control" name="surname" id="surname" value="<?php echo $sur; ?>" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fomr-group">
-                <div class="row">
-                    <div class="col-2">
-                        <label>เบอร์โทร</label>
-                        <input type="number" class="form-control" name = "phone" value="<?php echo $phone;?>" required>
-                </div>
-            </div>
-            </div>
-
-            
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2">
-                        <label>เลขห้อง</label>
-                        <input type="hidden" value="<?php echo $room;?>" name="oldroom" required><!-- เก็บเลขห้องเดิมเอาไว้ก่อน -->
-
-                        <select class="form-control" name="roomNumber" id="roomNumber">
-                            
-                            <option value="<?php echo $room ;?>"><?php echo $room ?></option>
-                            <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
-                            <option value="<?php echo $row['id_room']; 
-                                                ?>"><?php echo $row['id_room']; 
-                                                                                    ?></option>
-                            <?php } 
-                            ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2">
-                        <label>ประเภทรถต์</label>
-                        <select name=typeCar id="typeCar" class="form-control">
-                            <option value="<?php echo $vehicle; ?>"><?php echo $vehicle; ?></option>
-                            <option value="รถยนต์">รถยนต์</option>
-                            <option value="มอเตอร์ไซค์">มอเตอร์ไซค์</option>
-                            <option value="จักรยาน">จักรยาน</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <label>ป้ายทะเบียนรถ</label>
-                        <input type="text" class="form-control" name="plate" id="plate" value="<?php echo$plate; ?>">
+                        <div class="was-validated">
+                            <input type="text" class="form-control " name="idcard" id="idcard" value="<?php echo $id_card; ?>" maxlength="13" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่เลขบัตรประชาชน **
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-            <center>
-                <input type="submit" class=" btn btn-info" value="ตกลง">
-                <input type="reset" class="btn btn-secondary" value="ยกเลิก">
-            </center>
+                <br>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>ชื่อลูกค้า</label>
+                            <div class="was-validated">
+                                <input type="text" class="form-control" name="name" id="name" value="<?php echo $name; ?>" required>
+                                <div class="invalid-feedback">
+                                    ** กรุณาใส่ชื่อลูกค้า **
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label>นามสกุลลูกค้า</label>
+                            <input type="text" class="form-control" name="surname" id="surname" value="<?php echo $sur; ?>" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fomr-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>เบอร์โทร</label>
+                            <div class="was-validated">
+                                <input type="number" class="form-control" name="phone" value="<?php echo $phone; ?>" required>
+                                <div class="invalid-feedback">
+                                    ** กรุณาใส่เบอร์โทร **
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>เลขห้อง</label>
+                            <input type="hidden" value="<?php echo $room; ?>" name="oldroom" required><!-- เก็บเลขห้องเดิมเอาไว้ก่อน -->
+
+                            <select class="form-control" name="roomNumber" id="roomNumber">
+
+                                <option value="<?php echo $room; ?>"><?php echo $room ?></option>
+                                <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
+                                    <option value="<?php echo $row['id_room'];
+                                                    ?>"><?php echo $row['id_room'];
+                                                        ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>ประเภทรถต์</label>
+                            <select name=typeCar id="typeCar" class="form-control">
+                                <option value="<?php echo $vehicle; ?>"><?php echo $vehicle; ?></option>
+                                <option value="รถยนต์">รถยนต์</option>
+                                <option value="มอเตอร์ไซค์">มอเตอร์ไซค์</option>
+                                <option value="จักรยาน">จักรยาน</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <label>ป้ายทะเบียนรถ</label>
+                            <input type="text" class="form-control" name="plate" id="plate" value="<?php echo $plate; ?>">
+                        </div>
+                    </div>
+
+                </div>
+                <center>
+                    <input type="submit" class=" btn btn-info" value="ตกลง">
+                    <input type="reset" class="btn btn-secondary" value="ยกเลิก">
+                </center>
         </form>
     </div>
     <br>
-            <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
+    <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
     </div>
     <!--modal logout-->
 
@@ -213,93 +226,94 @@ if (!$_SESSION['userid']) {
 
     <!--modal room empty-->
     <div class="modal fade" id="roomEmpty" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ห้องทั้งหมด</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ห้องทั้งหมด</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container pt-3">
+                        <table class="table table-lg table-hover" id="room">
+                            <thead>
+                                <tr>
+                                    <th scope="col">เลขห้อง</th>
+                                    <th scope="col">ชนิดห้อง</th>
+                                    <th scope="col">สถานะห้อง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_array($resultroomEmpty)) { ?>
+                                    <tr>
+                                        <td><?php echo $row['id_room']; ?></td>
+                                        <td><?php echo $row['type_room']; ?></td>
+                                        <td><?php echo $row['status_room']; ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="modal-body">
-                        <div class="container pt-3">
-                            <table class="table table-lg table-hover" id="room">
-                                <thead>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal status Pay-->
+    <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <table class="table table-lg table-hover" id="statuspay">
+                            <thead>
+                                <tr>
+                                    <!--<th scope="col">เลขที่บิล</th>-->
+                                    <th scope="col">ชื่อ</th>
+                                    <th scope="col">นามสกุล</th>
+                                    <th scope="col">สถานะบิล</th>
+                                    <th scope="col">วันออกบิล</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_array($resultstatusPay)) { ?>
                                     <tr>
-                                        <th scope="col">เลขห้อง</th>
-                                        <th scope="col">ชนิดห้อง</th>
-                                        <th scope="col">สถานะห้อง</th>
+                                        <!--<td><?php //echo $row['id_bill'];
+                                                ?></td>-->
+                                        <td><?php echo $row['name_member']; ?></td>
+                                        <td><?php echo $row['sur_member']; ?></td>
+                                        <td><?php echo $row['status_bill']; ?></td>
+                                        <td><?php echo $row['date_bill']; ?></td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while($row = mysqli_fetch_array($resultroomEmpty)){ ?>
-                                    <tr>
-                                       <td><?php echo $row['id_room'];?></td>
-                                       <td><?php echo $row['type_room'];?></td>
-                                       <td><?php echo $row['status_room'];?></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
 
 
-        
-         <!-- Modal status Pay-->
-         <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <table class="table table-lg table-hover" id="statuspay">
-                                <thead>
-                                    <tr>
-                                        <!--<th scope="col">เลขที่บิล</th>-->
-                                        <th scope="col">ชื่อ</th>
-                                        <th scope="col">นามสกุล</th>
-                                        <th scope="col">สถานะบิล</th>
-                                        <th scope="col">วันออกบิล</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = mysqli_fetch_array($resultstatusPay)) { ?>
-                                        <tr>
-                                            <!--<td><?php //echo $row['id_bill'];?></td>-->
-                                            <td><?php echo $row['name_member']; ?></td>
-                                            <td><?php echo $row['sur_member']; ?></td>
-                                            <td><?php echo $row['status_bill']; ?></td>
-                                            <td><?php echo $row['date_bill']; ?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
         <br>
-            <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
+        <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
     </body>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

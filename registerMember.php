@@ -21,7 +21,7 @@ if (!$_SESSION['userid']) {
     $result = mysqli_query($connect, $query);
 
     $queryroom = "SELECT * FROM rental.room WHERE status_room='ห้องว่าง'";
-    $resultroom = mysqli_query($connect,$queryroom);
+    $resultroom = mysqli_query($connect, $queryroom);
 
     $queryroomEmpty = "SELECT * FROM rental.room";
     $resultroomEmpty = mysqli_query($connect, $queryroomEmpty);
@@ -98,8 +98,13 @@ if (!$_SESSION['userid']) {
             <div class="form-group">
                 <div class="row">
                     <div class="col-4">
-                        <label>รหัสบัตรประชาชน</label>
-                        <input type="number" class="form-control " name="idcard" id="idcard" required placeholder="เช่น 1249900366527" maxlength="13">
+                        <div class="was-validated">
+                            <label>รหัสบัตรประชาชน</label>
+                            <input type="number" class="form-control " name="idcard" id="idcard" required placeholder="เช่น 1249900366527" maxlength="13" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่เลขบัตรประชาชน **
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,8 +113,13 @@ if (!$_SESSION['userid']) {
             <div class="form-group">
                 <div class="row">
                     <div class="col-4">
-                        <label>ชื่อลูกค้า</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="นาย มีนา" required>
+                        <div class="was-validated">
+                            <label>ชื่อลูกค้า</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="นาย มีนา" required>
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่ชื่อลูกค้า **
+                            </div>
+                        </div>
                     </div>
                     <div class="col-4">
                         <label>นามสกุลลูกค้า</label>
@@ -120,20 +130,26 @@ if (!$_SESSION['userid']) {
 
             <div class="fomr-group">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label>เบอร์โทร</label>
-                        <input type="text" class="form-control" name = "phone" placeholder="084-555-6842" required maxlength="10">
+                        <div class="was-validated">
+                            <input type="number" class="form-control" name="phone" placeholder="084-555-6842" required maxlength="10">
+                            <div class="invalid-feedback">
+                                ** กรุณาใส่เบอร์โทร **
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div><br>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label>เลขห้อง</label>
+
                         <select class="form-control" name="roomNumber" id="roomNumber" required>
-                        <?php while($row = mysqli_fetch_array($resultroom)){?> 
-                            <option value="<?php echo $row['id_room'];?>"><?php echo $row['id_room'];?></option>
-                        <?php } ?>
+                            <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
+                                <option value="<?php echo $row['id_room']; ?>" required><?php echo $row['id_room']; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -141,7 +157,7 @@ if (!$_SESSION['userid']) {
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <label>ประเภทรถต์</label>
                         <select name=typeCar id="typeCar" class="form-control">
                             <option value="รถยนต์">รถยนต์</option>
@@ -149,10 +165,10 @@ if (!$_SESSION['userid']) {
                             <option value="จักรยาน">จักรยาน</option>
                         </select>
                     </div>
-                     <div class="col-2">
+                    <div class="col-3">
                         <label>ป้ายทะเบียนรถ</label>
                         <input type="text" class="form-control" name="plate" id="plate" placeholder="กข-4587">
-                     </div>
+                    </div>
                 </div>
             </div>
             <br>
@@ -161,10 +177,10 @@ if (!$_SESSION['userid']) {
                 <input type="reset" class="btn btn-secondary " value="ยกเลิก">
 
             </center>
-            </form>
-            <br>
-            <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
-        </div>
+        </form>
+        <br>
+        <center>Copyright © 2020 คะเมียวตำปรู๊ช คะเมียวตรำปร๊าช by KAPOOK V. 12.4</center><br>
+    </div>
 
 
     </div>
@@ -189,92 +205,93 @@ if (!$_SESSION['userid']) {
             </div>
         </div>
     </div>
-    
+
     <!--modal room empty-->
     <div class="modal fade" id="roomEmpty" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ห้องทั้งหมด</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ห้องทั้งหมด</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container pt-3">
+                        <table class="table table-lg table-hover" id="room">
+                            <thead>
+                                <tr>
+                                    <th scope="col">เลขห้อง</th>
+                                    <th scope="col">ชนิดห้อง</th>
+                                    <th scope="col">สถานะห้อง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_array($resultroomEmpty)) { ?>
+                                    <tr>
+                                        <td><?php echo $row['id_room']; ?></td>
+                                        <td><?php echo $row['type_room']; ?></td>
+                                        <td><?php echo $row['status_room']; ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="modal-body">
-                        <div class="container pt-3">
-                            <table class="table table-lg table-hover" id="room">
-                                <thead>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal status Pay-->
+    <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <table class="table table-lg table-hover" id="statuspay">
+                            <thead>
+                                <tr>
+                                    <!--<th scope="col">เลขที่บิล</th>-->
+                                    <th scope="col">ชื่อ</th>
+                                    <th scope="col">นามสกุล</th>
+                                    <th scope="col">สถานะบิล</th>
+                                    <th scope="col">วันออกบิล</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_array($resultstatusPay)) { ?>
                                     <tr>
-                                        <th scope="col">เลขห้อง</th>
-                                        <th scope="col">ชนิดห้อง</th>
-                                        <th scope="col">สถานะห้อง</th>
+                                        <!--<td><?php //echo $row['id_bill'];
+                                                ?></td>-->
+                                        <td><?php echo $row['name_member']; ?></td>
+                                        <td><?php echo $row['sur_member']; ?></td>
+                                        <td><?php echo $row['status_bill']; ?></td>
+                                        <td><?php echo $row['date_bill']; ?></td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while($row = mysqli_fetch_array($resultroomEmpty)){ ?>
-                                    <tr>
-                                       <td><?php echo $row['id_room'];?></td>
-                                       <td><?php echo $row['type_room'];?></td>
-                                       <td><?php echo $row['status_room'];?></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        
-         <!-- Modal status Pay-->
-         <div class="modal fade" id="statusPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <table class="table table-lg table-hover" id="statuspay">
-                                <thead>
-                                    <tr>
-                                        <!--<th scope="col">เลขที่บิล</th>-->
-                                        <th scope="col">ชื่อ</th>
-                                        <th scope="col">นามสกุล</th>
-                                        <th scope="col">สถานะบิล</th>
-                                        <th scope="col">วันออกบิล</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = mysqli_fetch_array($resultstatusPay)) { ?>
-                                        <tr>
-                                            <!--<td><?php //echo $row['id_bill'];?></td>-->
-                                            <td><?php echo $row['name_member']; ?></td>
-                                            <td><?php echo $row['sur_member']; ?></td>
-                                            <td><?php echo $row['status_bill']; ?></td>
-                                            <td><?php echo $row['date_bill']; ?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
     </body>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
