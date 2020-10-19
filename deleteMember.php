@@ -30,7 +30,7 @@ if (!$_SESSION['userid']) {
         echo"alert('ลบข้อมูลเรียบร้อย')";
         echo "</script>";
 
-        $queryroom = "UPDATE rental.room SET status_room='ห้องว่าง' WHERE id_room=$Numroom";
+        $queryroom = "UPDATE rental.room SET id_member = '',status_room='ห้องว่าง' WHERE id_room=$Numroom";
         $resultroom = mysqli_query($connect,$queryroom);
 
         $querydeletebill = "DELETE FROM rental.bill WHERE id_member=$id_member";

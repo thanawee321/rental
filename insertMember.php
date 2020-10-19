@@ -45,7 +45,7 @@ if (!$_SESSION['userid']) {
         $queryroom = "UPDATE rental.room SET id_member = $lastMember,status_room='ไม่ว่าง' WHERE id_room=$roomNumber";
         $resultroom = mysqli_query($connect,$queryroom);
         
-        //Header("Refresh:0; url=admin.php");
+        Header("Refresh:0; url=admin.php");
     }else {
         echo "<script>";
         echo"alert('เพิ่มข้อมูลล้มเหลว')";
