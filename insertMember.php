@@ -29,6 +29,11 @@ if (!$_SESSION['userid']) {
     $query = "INSERT INTO rental.member VALUES('','$idcard','$name','$surname','$roomNumber','$typeCar','$plate','$phone','$today')";
     $result = mysqli_query($connect,$query);
 
+    $lastquery = "SELECT member.id_member FROM member ORDER BY id_member DESC LIMIT 1";
+    $lastresult = mysqli_query($connect,$lastquery);
+
+     $row = mysqli_fetch_array($lastresult);
+        $lastMember=$row['id_member'];
 
     
     if($result){
@@ -37,10 +42,10 @@ if (!$_SESSION['userid']) {
         echo"alert('เพิ่มข้อมูลเรียบร้อย')";
         echo "</script>";
 
-        $queryroom = "UPDATE rental.room SET status_room='ไม่ว่าง' WHERE id_room=$roomNumber";
+        $queryroom = "UPDATE rental.room SET id_member = $lastMember,status_room='ไม่ว่าง' WHERE id_room=$roomNumber";
         $resultroom = mysqli_query($connect,$queryroom);
         
-        Header("Refresh:0; url=admin.php");
+        //Header("Refresh:0; url=admin.php");
     }else {
         echo "<script>";
         echo"alert('เพิ่มข้อมูลล้มเหลว')";

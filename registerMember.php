@@ -17,7 +17,7 @@ if (!$_SESSION['userid']) {
     Header('Refresh:0; url=index.php');
 } else {
     $name_login = $_SESSION['name'];
-    $query  = "SELECT * FROM rental.member";
+    $query  = "SELECT member.id_member,member.idcard_member,member.name_member,member.sur_member,member.room_member,room.type_room,member.vehicle_member,member.plate_member,member.phone_member,member.fristday_member FROM member INNER JOIN room ON member.id_member=room.id_member";
     $result = mysqli_query($connect, $query);
 
     $queryroom = "SELECT * FROM rental.room WHERE status_room='ห้องว่าง'";
