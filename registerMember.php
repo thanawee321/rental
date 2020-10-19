@@ -160,6 +160,7 @@ if (!$_SESSION['userid']) {
                     <div class="col-3">
                         <label>ประเภทรถต์</label>
                         <select name=typeCar id="typeCar" class="form-control">
+                            <option value="ไม่มี"> - </option>
                             <option value="รถยนต์">รถยนต์</option>
                             <option value="มอเตอร์ไซค์">มอเตอร์ไซค์</option>
                             <option value="จักรยาน">จักรยาน</option>
