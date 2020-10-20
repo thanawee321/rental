@@ -40,13 +40,14 @@ if (!$_SESSION['userid']) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap4.min.css">
+        <script src="https://kit.fontawesome.com/992613a55e.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="asset/style.css">
     </head>
 
     <body>
         <div class="sticky-top">
             <nav class="navbar navbar-expand-lg  navbar-light navbar-brown">
-                <a class="navbar-brand text-white" href="admin.php">Home</a>
+                <a class="navbar-brand text-white" href="admin.php"><i class="fas fa-home"></i> Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon text-white"></span>
                 </button>
@@ -61,7 +62,7 @@ if (!$_SESSION['userid']) {
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                การจัดการ
+                            <i class="fas fa-tasks"></i> การจัดการ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item " href="registerMember.php">เพิ่มข้อมูลลูกค้า</a>
@@ -83,7 +84,7 @@ if (!$_SESSION['userid']) {
                     <form class="form-inline my-2 my-lg-0">
                         <h4 class="mr-sm-2 text-white"><?php echo $name_login; ?></h4>
                         <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-                            Logout
+                        <i class="fas fa-power-off"></i> Logout
                         </button>
                     </form>
                 </div>
@@ -123,9 +124,9 @@ if (!$_SESSION['userid']) {
                             <td><?php echo $row['phone_member']; ?></td>
                             <td><?php echo $row['fristday_member']; ?></td>
 
-                            <td><button type="button" id="<?php echo $row['id_member'] ?>" Numroom="<?php echo $row['room_member']; ?>" class="btn btn-danger delete" data-toggle="modal" data-target="#delete">ลบ</button></td>
-                            <td><a href="editMember.php?id_member=<?php echo $row['id_member']; ?>" class="btn btn-warning">แก้ไข</a></td>
-                            <td><a href="billReport.php?id_member=<?php echo $row['id_member']; ?> & name=<?php echo $row['name_member'] . " " . $row['sur_member']; ?>" class="btn btn-info">Bill</a></td>
+                            <td><button type="button" id="<?php echo $row['id_member'] ?>" Numroom="<?php echo $row['room_member']; ?>" class="btn btn-danger delete" data-toggle="modal" data-target="#delete"><i class="fas fa-trash"></i></button></td>
+                            <td><a href="editMember.php?id_member=<?php echo $row['id_member']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="billReport.php?id_member=<?php echo $row['id_member']; ?> & name=<?php echo $row['name_member'] . " " . $row['sur_member']; ?>" class="btn btn-info"><i class="fas fa-file-invoice"></i></a></td>
 
                         </tr>
                     <?php } ?>
@@ -275,6 +276,7 @@ if (!$_SESSION['userid']) {
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="asset/app.js"></script>
 
     </html>

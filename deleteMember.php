@@ -41,7 +41,7 @@ if (!$_SESSION['userid']) {
         echo "<script>";
         echo"alert('ลบข้อมูลล้มเหลว')";
         echo "</script>";
-        //echo "window.history.back()";
+        echo "window.history.back()";
     }
 
     

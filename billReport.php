@@ -42,6 +42,7 @@ if (!$_SESSION['userid']) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap4.min.css">
+        <script src="https://kit.fontawesome.com/992613a55e.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="asset/style.css">
     </head>
 
@@ -188,8 +189,8 @@ if (!$_SESSION['userid']) {
                             <?php } ?>
                             <td><?php echo $row['date_bill']; ?></td>
 
-                            <td><button type="button" class="btn btn-danger btndeletebill" id="<?php echo $row['id_bill']; ?>" data-toggle="modal" data-target="#deletebill">ลบ</button></td>
-                            <td><a href="editBillReport.php?id_bill=<?php echo $row['id_bill']; ?>" class="btn btn-warning">แก้ไข</a></td>
+                            <td><button type="button" class="btn btn-danger btndeletebill" id="<?php echo $row['id_bill']; ?>" data-toggle="modal" data-target="#deletebill"><i class="fas fa-trash"></i></button></td>
+                            <td><a href="editBillReport.php?id_bill=<?php echo $row['id_bill']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
                             <!--<td><button type="button" class="btn btn-info viewdetailbill" id="<?php// echo $row['id_bill']; ?>" data-toggle="modal" data-target="#viewbillreport">รายละเอียด</button>-->
                         <?php } ?>
                 </tbody>

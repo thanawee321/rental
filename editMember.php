@@ -30,6 +30,7 @@ if (!$_SESSION['userid']) {
         $name = $row['name_member'];
         $sur = $row['sur_member'];
         $room = $row['room_member'];
+        $type_room = $row['type_room'];
         $vehicle = $row['vehicle_member'];
         $plate = $row['plate_member'];
         $phone = $row['phone_member'];
@@ -162,7 +163,7 @@ if (!$_SESSION['userid']) {
 
                             <select class="form-control" name="roomNumber" id="roomNumber">
                             
-                                <option value="<?php echo $room; ?>"><?php echo $room ?></option>
+                                <option value="<?php echo $room; ?>"><?php echo $room ?> | <?php echo $type_room ; ?></option>
                                 <?php while ($row = mysqli_fetch_array($resultroom)) { ?>
                                     <option value="<?php echo $row['id_room'];?>"><?php echo $row['id_room']; ?> | <?php echo $row['type_room'];?></option>
                                 <?php }
